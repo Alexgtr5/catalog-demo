@@ -14,16 +14,21 @@ const AUTO_DISMISS_MS = 3000;
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
   const nextId = useRef(0);
+  const activeMessages = useRef(new Set<string>());
 
-  const dismiss = useCallback((id: number) => {
+  const dismiss = useCallback((id: number, message: string) => {
+    activeMessages.current.delete(message);
     setToasts((current) => current.filter((toast) => toast.id !== id));
   }, []);
 
   const showToast = useCallback(
     (message: string, variant: ToastVariant = 'info') => {
+      if (activeMessages.current.has(message)) return;
+
+      activeMessages.current.add(message);
       const id = nextId.current++;
       setToasts((current) => [...current, { id, message, variant }]);
-      setTimeout(() => dismiss(id), AUTO_DISMISS_MS);
+      setTimeout(() => dismiss(id, message), AUTO_DISMISS_MS);
     },
     [dismiss],
   );
@@ -45,7 +50,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
               variant="ghost"
               size="sm"
               className={styles.close}
-              onClick={() => dismiss(toast.id)}
+              onClick={() => dismiss(toast.id, toast.message)}
               aria-label="Закрыть уведомление"
             >
               ×

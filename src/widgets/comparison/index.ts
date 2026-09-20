@@ -1,0 +1,1 @@
+export { ComparisonWidget } from './ui/ComparisonWidget';
