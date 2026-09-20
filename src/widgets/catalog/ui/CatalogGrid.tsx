@@ -1,13 +1,19 @@
 import { useMemo, useState } from 'react';
 import { Button, EmptyState, Skeleton } from '../../../shared/ui';
-import { ProductCard, useProducts } from '../../../entities/product';
+import { ProductCard, type Product } from '../../../entities/product';
 import { CatalogFilters, filterProducts, INITIAL_FILTER } from '../../../features/filter-products';
+import { ToggleComparisonButton } from '../../../features/toggle-comparison';
 import styles from './CatalogGrid.module.css';
 
 const SKELETON_COUNT = 6;
 
-export function CatalogGrid() {
-  const { products, status, reload } = useProducts();
+type CatalogGridProps = {
+  products: Product[];
+  status: 'loading' | 'success' | 'error';
+  onReload: () => void;
+};
+
+export function CatalogGrid({ products, status, onReload }: CatalogGridProps) {
   const [filter, setFilter] = useState(INITIAL_FILTER);
 
   const visibleProducts = useMemo(() => filterProducts(products, filter), [products, filter]);
@@ -33,7 +39,7 @@ export function CatalogGrid() {
         variant="error"
         title="Не удалось загрузить каталог"
         description="Проверьте соединение и попробуйте ещё раз."
-        action={<Button onClick={reload}>Повторить</Button>}
+        action={<Button onClick={onReload}>Повторить</Button>}
       />
     );
   }
@@ -50,7 +56,11 @@ export function CatalogGrid() {
       ) : (
         <div className={styles.grid}>
           {visibleProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={product.id}
+              product={product}
+              footer={<ToggleComparisonButton productId={product.id} />}
+            />
           ))}
         </div>
       )}
