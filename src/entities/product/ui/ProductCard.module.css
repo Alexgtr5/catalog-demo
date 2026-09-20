@@ -1,0 +1,51 @@
+.cover {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.category {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.title {
+  font-size: var(--font-size-md);
+}
+
+.price {
+  margin-top: auto;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.specValue {
+  color: var(--color-text);
+  text-align: right;
+}
+
+.footer {
+  padding: 0 var(--space-md) var(--space-md);
+}
