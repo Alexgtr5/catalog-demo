@@ -1,0 +1,40 @@
+{
+  "name": "@catalog/api",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./serverless": "./dist/serverless.js"
+  },
+  "scripts": {
+    "dev": "nest start --watch",
+    "build": "nest build",
+    "start": "node dist/main.js",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@catalog/contracts": "*",
+    "@fastify/helmet": "^13.1.1",
+    "@fastify/static": "^10.1.5",
+    "@nestjs/common": "^12.1.1",
+    "@nestjs/config": "^12.0.1",
+    "@nestjs/core": "^12.1.1",
+    "@nestjs/platform-fastify": "^12.1.1",
+    "@nestjs/swagger": "^12.0.2",
+    "@nestjs/terminus": "^12.1.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^12.0.8",
+    "@nestjs/testing": "^12.1.1",
+    "@swc/core": "^1.16.2",
+    "@types/node": "^24.13.3",
+    "typescript": "~6.0.2",
+    "unplugin-swc": "^2.0.0",
+    "vitest": "^5.0.1"
+  }
+}

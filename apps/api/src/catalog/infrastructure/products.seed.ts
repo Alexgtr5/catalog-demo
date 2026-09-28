@@ -1,6 +1,6 @@
-import type { Product } from '../model/types';
+import type { Product } from '@catalog/contracts';
 
-export const PRODUCTS_MOCK: Product[] = [
+export const PRODUCTS_SEED: readonly Product[] = [
   {
     id: 'lp-01',
     title: 'Ноутбук Vector 14 Pro',

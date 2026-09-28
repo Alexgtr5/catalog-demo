@@ -2,17 +2,22 @@
   "name": "catalog-monorepo",
   "private": true,
   "version": "0.0.0",
+  "engines": {
+    "node": "22.x"
+  },
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
+    "build:packages": "npm run build --workspace @catalog/contracts",
     "dev": "npm run dev --workspace @catalog/web",
-    "build": "npm run build --workspaces --if-present",
+    "dev:api": "npm run build:packages && npm run dev --workspace @catalog/api",
+    "build": "npm run build:packages && npm run build --workspaces --if-present",
     "preview": "npm run preview --workspace @catalog/web",
     "lint": "oxlint",
-    "typecheck": "npm run typecheck --workspaces --if-present",
-    "test": "npm run test --workspaces --if-present"
+    "typecheck": "npm run build:packages && npm run typecheck --workspaces --if-present",
+    "test": "npm run build:packages && npm run test --workspaces --if-present"
   },
   "devDependencies": {
     "oxlint": "^1.81.0"
