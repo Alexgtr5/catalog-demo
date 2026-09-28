@@ -1,0 +1,8 @@
+.git
+.github
+.claude
+docs
+node_modules
+**/node_modules
+**/dist
+**/*.log
