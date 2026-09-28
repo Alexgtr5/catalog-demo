@@ -4,7 +4,7 @@
 
 - **Pull Request:** https://github.com/Alexgtr5/catalog-demo/pull/1
 - **Ветка:** `feature/product-comparison` → `main`
-- **Дев-стенд:** https://alexgtr5.github.io/catalog-demo/
+- **Дев-стенд:** https://catalog-demo-tyulin.vercel.app/
 - **Постановка:** ФТТ «Сравнение товаров», разобрана в `spec.md`
 - **Артефакты пайплайна:** `spec.md`, `design-plan.md`, `adr.md` в этой же директории
 
@@ -35,12 +35,12 @@
 
 ## Smoke-check дев-стенда
 
-Выполнен после мержа PR #1 (merge-commit `e375529`) и успешного прогона job
-«Деплой на стенд».
+Выполнен после мержа PR #1 (merge-commit `e375529`). Стенд с тех пор переехал
+с GitHub Pages на Vercel, хеши бандлов не изменились.
 
 | Пункт | Статус |
 |---|---|
-| Доступность `https://alexgtr5.github.io/catalog-demo/` | HTTP 200 |
+| Доступность `https://catalog-demo-tyulin.vercel.app/` | HTTP 200 |
 | JS-бандл развёрнут | HTTP 200, `index-CXGet-uh.js` |
 | CSS-бандл развёрнут | HTTP 200, `index-elfqAs3c.css` |
 | Хеши бандлов совпадают с локальной проверенной сборкой | да |
@@ -70,6 +70,5 @@ JS в браузере. Интерактивные сценарии (добав�
 
 ## Техдолг, замеченный по ходу
 
-- В workflow используются `actions/checkout@v4` и `actions/setup-node@v4` на
-  Node.js 20 — GitHub уже помечает их как deprecated и принудительно запускает
-  на Node.js 24. Стоит обновить до `@v5` отдельной задачей.
+- ~~В workflow используются `actions/checkout@v4` и `actions/setup-node@v4` на
+  Node.js 20.~~ Закрыто: обновлено до `@v5` при переезде стенда на Vercel.
