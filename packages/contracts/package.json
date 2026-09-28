@@ -1,0 +1,18 @@
+{
+  "name": "@catalog/contracts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.2"
+  }
+}
