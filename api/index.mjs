@@ -1,8 +1,4 @@
-export default function handler(req, res) {
-  const vercelHeaders = Object.fromEntries(
-    Object.entries(req.headers).filter(([name]) => name.startsWith('x-vercel')),
-  );
-
-  res.setHeader('content-type', 'application/json');
-  res.end(JSON.stringify({ url: req.url, vercelHeaders }));
-}
+// Точка входа serverless-функции Vercel: сюда rewrite'ом заворачивается весь /api/*.
+// Файл вынесен из воркспейса и написан на голом ESM, потому что его собирает
+// не наш tsc, а сборщик платформы — в нём не должно быть ничего, кроме адреса.
+export { default } from '@catalog/api/serverless';
