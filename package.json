@@ -9,7 +9,7 @@
   "scripts": {
     "build:packages": "npm run build --workspace @catalog/contracts",
     "dev": "npm run dev --workspace @catalog/web",
-    "dev:api": "npm run dev --workspace @catalog/api",
+    "dev:api": "npm run build:packages && npm run dev --workspace @catalog/api",
     "build": "npm run build:packages && npm run build --workspaces --if-present",
     "preview": "npm run preview --workspace @catalog/web",
     "lint": "oxlint",
