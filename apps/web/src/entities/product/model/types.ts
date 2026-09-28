@@ -1,12 +1,6 @@
-export type ProductCategory = 'laptops' | 'phones' | 'headphones';
+import type { ProductCategory } from '@catalog/contracts';
 
-export type Product = {
-  id: string;
-  title: string;
-  category: ProductCategory;
-  price: number;
-  characteristics: Record<string, string>;
-};
+export type { Product, ProductCategory } from '@catalog/contracts';
 
 export const CATEGORY_LABELS: Record<ProductCategory, string> = {
   laptops: 'Ноутбуки',
